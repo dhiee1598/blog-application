@@ -1,9 +1,13 @@
-const App = () => {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
-};
+import Blogs from "./components/Blogs";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+
+const App = () => (
+  <div className="max-w-5xl m-auto">
+    <Header />
+    <Blogs />
+    <Footer />
+  </div>
+);
 
 export default App;
