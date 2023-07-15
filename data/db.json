@@ -1,0 +1,22 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "My First Blog",
+      "body": "Lorem 1233123123 sadadad dadas das das das",
+      "author": "Dexter Balderama"
+    },
+    {
+      "id": 2,
+      "title": "My Second Blog",
+      "body": "Lorem 1233123123 sadadad dadas das das das",
+      "author": "Zelany Balderama"
+    },
+    {
+      "id": 3,
+      "title": "My Third Blog",
+      "body": "Lorem 1233123123 sadadad dadas das das das",
+      "author": "Zoren Balderama"
+    }
+  ]
+}
