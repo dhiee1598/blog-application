@@ -1,14 +1,21 @@
 import Blogs from "./components/Blogs";
+import CreateBlog from "./components/CreateBlog";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="max-w-5xl m-auto">
-      <Header />
-      <Blogs />
-      <Footer />
-    </div>
+    <Router>
+      <div className="max-w-5xl m-auto">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Blogs />} />
+          <Route path="/create" element={<CreateBlog />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

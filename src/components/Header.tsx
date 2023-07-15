@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
     <header
@@ -10,10 +12,10 @@ const Header = () => {
       <div>
         <ul className="flex text-xl text-cyan-700 font-semibold">
           <li>
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="px-5">
-            <a href="/new">Create Blog</a>
+            <Link to="/create">Create Blog</Link>
           </li>
         </ul>
       </div>
