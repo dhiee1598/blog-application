@@ -1,23 +1,22 @@
 import Blog from "./Blog";
-import { useState, useEffect } from "react";
+import useFetch from "../hooks/useFetch";
 
 const Blogs = () => {
-  const [items, setItems] = useState();
-
-  useEffect(() => {
-    fetch("http://localhost:8000/blogs")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setItems(data);
-      });
-  }, []);
+  const { data, isPending, error } = useFetch("http://localhost:8000/blogs");
 
   return (
     <div className="w-4/5 min-h-screen m-auto p-5">
-      {items && <Blog items={items} title="All Blogs" />}
+      {error && (
+        <div>
+          <h2>{error}</h2>
+        </div>
+      )}
+      {isPending && (
+        <div>
+          <h1>Loading...</h1>
+        </div>
+      )}
+      {data && <Blog items={data} title="All Blogs" />}
     </div>
   );
 };
