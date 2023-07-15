@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface BlogListProps {
   items: BlogItem[];
   title: string;
@@ -19,8 +21,10 @@ const Blog = ({ items, title }: BlogListProps) => {
             className="shadow-lg p-3 transition duration-500  hover:shadow-gray-500 mb-5 "
             key={item.id}
           >
-            <h2>{item.title}</h2>
-            <p className="text-cyan-950">Written by: {item.author}</p>
+            <Link to={`/blogs/${item.id}`}>
+              <h2>{item.title}</h2>
+              <p className="text-cyan-950">Written by: {item.author}</p>
+            </Link>
           </div>
         );
       })}

@@ -1,3 +1,4 @@
+import BlogDetails from "./components/BlogDetails";
 import Blogs from "./components/Blogs";
 import CreateBlog from "./components/CreateBlog";
 import Footer from "./components/Footer";
@@ -12,6 +13,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Blogs />} />
           <Route path="/create" element={<CreateBlog />} />
+          <Route path="/blogs/:id" element={<BlogDetails />} />
         </Routes>
         <Footer />
       </div>
