@@ -3,11 +3,10 @@ import useFetch from "../hooks/useFetch";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  const {
-    data: blog,
-    isPending,
-    error,
-  } = useFetch("http://localhost:8000/blogs/" + id);
+
+  const { data, isPending, error } = useFetch(
+    `http://localhost:8000/blogs/${id}`
+  );
 
   return (
     <div className="w-4/5 min-h-screen m-auto p-5">
@@ -22,6 +21,7 @@ const BlogDetails = () => {
         </div>
       )}
     </div>
+    // {data && data.title}
   );
 };
 
