@@ -28,7 +28,7 @@ const BlogDetails = () => {
           <h3 className="text-red-600 text-lg mb-5 italic">
             Written by: {blog.author}
           </h3>
-          <p className="leading-6 text-lg">{blog.body}</p>
+          <p className="leading-6 text-md">{blog.body}</p>
         </div>
       )}
     </div>
