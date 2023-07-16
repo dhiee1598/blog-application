@@ -24,7 +24,6 @@ const CreateBlog = () => {
       body: JSON.stringify(blog),
     }).then(() => {
       setTimeout(() => {
-        setIsPending(true);
         navigate("/");
       }, 1000);
     });
