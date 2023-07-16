@@ -3,7 +3,12 @@ import Blogs from "./components/Blogs";
 import CreateBlog from "./components/CreateBlog";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 const App = () => {
   return (
@@ -14,6 +19,7 @@ const App = () => {
           <Route path="/" element={<Blogs />} />
           <Route path="/create" element={<CreateBlog />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         <Footer />
       </div>
