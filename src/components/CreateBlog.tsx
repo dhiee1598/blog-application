@@ -1,13 +1,16 @@
-import { useState } from "react";
-import { ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateBlog = () => {
   const [title, setTitle] = useState<string>("");
   const [body, setBody] = useState<string>("");
   const [author, setAuthor] = useState<string>("");
+  const [isPending, setIsPending] = useState<boolean>(true);
+  const navigate = useNavigate();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsPending(false);
 
     const blog = {
       title,
@@ -15,7 +18,16 @@ const CreateBlog = () => {
       author,
     };
 
-    console.log(blog);
+    fetch("http://localhost:8000/blogs", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(blog),
+    }).then(() => {
+      setTimeout(() => {
+        setIsPending(true);
+        navigate("/");
+      }, 1000);
+    });
   };
 
   return (
@@ -48,14 +60,15 @@ const CreateBlog = () => {
           <label>Blog author:</label>
           <input
             type="text"
+            value={author}
             required
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
               setAuthor(e.target.value)
             }
           />
         </div>
-        <button className="border p-1 text-lg rounded-md transition duration-500 text-white bg-blue-800 border-black hover:bg-blue-600">
-          Submit
+        <button className="border p-1 text-lg rounded-md transition duration-500 text-white bg-blue-600 border-black hover:bg-blue-800">
+          {isPending ? "Submit" : "Adding..."}
         </button>
       </form>
     </div>
