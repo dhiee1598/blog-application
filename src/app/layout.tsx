@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import Session from '@/components/Session';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -16,12 +17,14 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang='en'>
-      <body className={poppins.className}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
+    <Session>
+      <html lang='en'>
+        <body className={poppins.className}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+        </body>
+      </html>
+    </Session>
   );
 }
