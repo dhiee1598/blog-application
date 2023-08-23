@@ -1,8 +1,8 @@
-import Navbar from '@/components/Navbar/Navbar';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import SessionProviders from '@/components/Session/SessionProviders';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -10,19 +10,18 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'Blogs Mania',
-  description: 'My first project using NextJS 13.4',
+  title: 'Blog Mania',
+  description: 'This is my first project using NextJS 13.4',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <SessionProviders>
-      <html lang='en'>
-        <body className={poppins.className}>
-          <Navbar />
-          {children}
-        </body>
-      </html>
-    </SessionProviders>
+    <html lang='en'>
+      <body className={poppins.className}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
   );
 }
