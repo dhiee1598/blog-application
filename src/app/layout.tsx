@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <html lang='en'>
         <body className={poppins.className}>
           <Navbar />
-          <main>{children}</main>
+          <main className='shadow-xl max-w-6xl m-auto min-w-[350px]'>{children}</main>
           <Footer />
         </body>
       </html>
