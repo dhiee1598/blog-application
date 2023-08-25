@@ -1,11 +1,14 @@
 import ButtonSignOut from '@/components/ButtonSignOut';
 import { authOptions } from '@/lib/authOptions';
+import formatDate from '@/lib/formatData';
 import { UserBlogProps } from '@/types/types';
 import axios from 'axios';
 import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+
+export const revalidate = 0;
 
 const getData = async (id: string) => {
   const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);
@@ -22,7 +25,7 @@ const ProfilePage = async () => {
   const userBlog: UserBlogProps = await getData(session?.user.id);
 
   return (
-    <div className=' max-w-[800px] shadow-xl m-auto min-h-[calc(100vh-4rem)] pt-3'>
+    <div className=' max-w-[800px] shadow-xl m-auto min-h-[calc(100vh-4rem)] py-5'>
       <div className='  flex justify-evenly items-center p-5'>
         <figure>
           <Image
@@ -66,7 +69,20 @@ const ProfilePage = async () => {
         </div>
       </div>
       <div>
-        <h1 className='text-center text-xl pt-5'>Total Post: 4</h1>
+        <h1 className='text-center text-xl pt-5'>Total Post: {userBlog.Blog.length}</h1>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 p-2'>
+          {userBlog.Blog.map((blog) => (
+            <Link
+              key={blog.id}
+              href={`blog/${blog.id}`}
+              className='shadow-xl p-3 text-center h-auto w-full'
+            >
+              <h1 className='font-bold text-lg'>Title: {blog.title}</h1>
+              <p className='text-base italic text-red-500'>Author: {blog.author}</p>
+              <p className='text-xs text-blue-500'>Created At: {formatDate(blog.createdAt)}</p>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

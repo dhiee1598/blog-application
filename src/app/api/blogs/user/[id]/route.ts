@@ -10,7 +10,7 @@ export const GET = async (req: Request) => {
   // ! Check if User ID is valid
   const checkUserId = await prisma.user.findFirst({
     where: { id: userId },
-    include: { Blog: true },
+    include: { Blog: { orderBy: { createdAt: 'desc' } } },
   });
   if (!checkUserId)
     return NextResponse.json({ message: 'User ID not found' }, { status: 404 });
