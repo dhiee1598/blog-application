@@ -16,6 +16,7 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id;
+
       return session;
     },
     async redirect({ url, baseUrl }) {

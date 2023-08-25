@@ -2,15 +2,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export const usePost = (url: string) => {
+export const useUpdateUser = (url: string) => {
   const [isLoading, setIsLoading] = useState<boolean>();
   const router = useRouter();
 
-  const createPost = async (value: Object) => {
+  const updateUser = async (value: Object) => {
     setIsLoading(true);
 
     await axios
-      .post(url, value)
+      .patch(url, value)
       .then((res) => {
         setIsLoading(false);
         console.log(res.data);
@@ -22,5 +22,5 @@ export const usePost = (url: string) => {
       });
   };
 
-  return { createPost, isLoading };
+  return { updateUser, isLoading };
 };

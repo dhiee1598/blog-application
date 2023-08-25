@@ -1,4 +1,11 @@
+import { authOptions } from '@/lib/authOptions';
+import { getServerSession } from 'next-auth';
+import { redirect } from 'next/navigation';
+
 const WelcomePage = async () => {
+  const session = await getServerSession(authOptions);
+  if (session) redirect('/home');
+
   return (
     <div className='w-full h-[calc(100vh-4rem)] flex justify-center items-center flex-col'>
       <h1 className='text-5xl uppercase text-center shadow-md p-3 font-extralight md:text-6xl'>
