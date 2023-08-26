@@ -44,7 +44,7 @@ export const PATCH = async (req: Request) => {
     return NextResponse.json({ message: 'Something went wrong!' }, { status: 400 });
 
   return NextResponse.json(
-    { message: 'Updated Blog Successfully', data: updateUserInfo },
+    { message: 'Updated Profile Information Successfully', data: updateUserInfo },
     { status: 200 }
   );
 };
