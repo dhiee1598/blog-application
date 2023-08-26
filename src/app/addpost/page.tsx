@@ -6,6 +6,8 @@ import { NewBlogPost } from '@/types/types';
 import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
+import { redirect } from 'next/navigation';
 
 const INITIAL_DATA: NewBlogPost = {
   title: '',
@@ -16,6 +18,11 @@ const INITIAL_DATA: NewBlogPost = {
 const AddPage = () => {
   const { createPost, isLoading } = usePost('http://localhost:3000/api/blogs');
   const [newBlog, setNewBlog] = useState(INITIAL_DATA);
+  const session = useSession();
+
+  if (session.status !== 'authenticated') {
+    redirect('/');
+  }
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

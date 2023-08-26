@@ -23,3 +23,8 @@ export type UpdateBlogProps = {
   content: string;
   id: string;
 };
+
+export type PaginationProps = {
+  hasNextPage: boolean;
+  hasPrevPage: boolean;
+};

@@ -19,13 +19,14 @@ const Navbar = async () => {
             href='/profile'
             className='text-green-600 p-2 underline underline-offset-8 mr-3 md:text-lg'
           >
-            Hi! Dexter
+            Hi! {session.user.name}
           </Link>
           <Image
-            src='/icons8-test-account-96.png'
+            src={session.user.image || '/icons8-test-account-96.png'}
             alt='Profile Image'
             width={35}
             height={35}
+            className='rounded-full'
           />
         </div>
       ) : (

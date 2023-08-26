@@ -5,10 +5,6 @@ import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
 export const GET = async () => {
-  // ! Check for session
-  const session = await getServerSession(authOptions);
-  if (!session) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-
   const allBlog = await prisma.blog.findMany({ include: { user: true } });
   return NextResponse.json(allBlog, { status: 200 });
 };

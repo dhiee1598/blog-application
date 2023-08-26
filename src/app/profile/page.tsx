@@ -29,7 +29,7 @@ const ProfilePage = async () => {
       <div className='  flex justify-evenly items-center p-5'>
         <figure>
           <Image
-            src='/icons8-test-account-96.png'
+            src={userBlog.image || '/icons8-test-account-96.png'}
             alt='Profile Pic'
             width={100}
             height={100}
