@@ -7,7 +7,9 @@ import { redirect } from 'next/navigation';
 
 const getData = async (id: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${id}`);
+    const response = await axios.get(
+      `https://blogmania-application.vercel.app/api/blogs/${id}`
+    );
     return response.data;
   } catch (err) {
     console.log(err);

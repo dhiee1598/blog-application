@@ -12,7 +12,9 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 const getData = async (value: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${value}`);
+    const response = await axios.get(
+      `https://blogmania-application.vercel.app/api/blogs/${value}`
+    );
     return response.data;
   } catch (err) {
     console.log(err);

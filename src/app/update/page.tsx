@@ -6,7 +6,9 @@ import { redirect } from 'next/navigation';
 import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const getData = async (id: string) => {
-  const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);
+  const response = await axios.get(
+    `https://blogmania-application.vercel.app/api/blogs/user/${id}`
+  );
   return response.data;
 };
 
