@@ -1,4 +1,5 @@
 import PaginationControl from '@/components/PaginationControl';
+
 import formatDate from '@/lib/formatData';
 import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
@@ -23,8 +24,8 @@ const HomePage = async ({
   searchParams: { [key: string]: string | string[] | undefined };
 }) => {
   // ! Check if session is started
-  // const session = await getServerSession(authOptions);
-  // if (!session) redirect('/');
+  const session = await getServerSession(authOptions);
+  if (!session) redirect('/');
 
   const page = searchParams['page'] ?? '1';
   const per_page = searchParams['per_page'] ?? '6';
