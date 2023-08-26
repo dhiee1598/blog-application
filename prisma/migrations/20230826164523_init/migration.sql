@@ -34,7 +34,7 @@ CREATE TABLE "User" (
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
     "username" TEXT,
-    "contact" INTEGER,
+    "contact" TEXT,
     "aboutMe" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")

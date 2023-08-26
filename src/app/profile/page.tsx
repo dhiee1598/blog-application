@@ -1,5 +1,4 @@
 import ButtonSignOut from '@/components/ButtonSignOut';
-import { authOptions } from '@/lib/authOptions';
 import formatDate from '@/lib/formatData';
 import { UserBlogProps } from '@/types/types';
 import axios from 'axios';
@@ -7,6 +6,7 @@ import { getServerSession } from 'next-auth';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const getData = async (id: string) => {
   try {

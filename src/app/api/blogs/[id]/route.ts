@@ -1,8 +1,8 @@
-import { authOptions } from '@/lib/authOptions';
 import { prisma } from '@/lib/prisma';
 import { NewBlogPost } from '@/types/types';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
+import { authOptions } from '../../auth/[...nextauth]/route';
 
 export const GET = async (req: Request) => {
   // ! Check if Blog ID is valid

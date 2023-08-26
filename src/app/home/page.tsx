@@ -1,5 +1,4 @@
 import PaginationControl from '@/components/PaginationControl';
-import { authOptions } from '@/lib/authOptions';
 import formatDate from '@/lib/formatData';
 import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
@@ -7,6 +6,7 @@ import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const getData = async () => {
   try {

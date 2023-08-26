@@ -1,5 +1,5 @@
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import BlogForm from '@/components/BlogForm';
-import { authOptions } from '@/lib/authOptions';
 import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
 import { getServerSession } from 'next-auth';

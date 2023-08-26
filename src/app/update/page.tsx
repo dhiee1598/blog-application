@@ -1,9 +1,9 @@
 import UserForm from '@/components/UserForm';
-import { authOptions } from '@/lib/authOptions';
 import { UserBlogProps } from '@/types/types';
 import axios from 'axios';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { authOptions } from '../api/auth/[...nextauth]/route';
 
 const getData = async (id: string) => {
   const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);

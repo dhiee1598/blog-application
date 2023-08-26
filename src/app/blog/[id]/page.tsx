@@ -5,9 +5,10 @@ import Image from 'next/image';
 import formatDate from '@/lib/formatData';
 import ButtonUpdateDelete from '@/components/ButtonUpdateDelete';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/authOptions';
+
 import Link from 'next/link';
 import { Metadata } from 'next';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 const getData = async (value: string) => {
   try {
