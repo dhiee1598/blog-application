@@ -15,7 +15,7 @@ export const GET = async () => {
 export const POST = async (req: Request) => {
   // ! Check for session
   const session = await getServerSession(authOptions);
-  if (!session) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  if (!session?.user) return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
 
   // ! Check for required fields is not empty
   const body = (await req.json()) as NewBlogPost;
