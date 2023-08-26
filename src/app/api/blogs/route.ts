@@ -5,7 +5,10 @@ import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 
 export const GET = async () => {
-  const allBlog = await prisma.blog.findMany({ include: { user: true } });
+  const allBlog = await prisma.blog.findMany({
+    include: { user: true },
+    orderBy: { createdAt: 'desc' },
+  });
   return NextResponse.json(allBlog, { status: 200 });
 };
 

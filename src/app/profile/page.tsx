@@ -8,11 +8,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
-export const revalidate = 0;
-
 const getData = async (id: string) => {
-  const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);
-  return response.data;
+  try {
+    const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const ProfilePage = async () => {

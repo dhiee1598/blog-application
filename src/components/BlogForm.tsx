@@ -26,6 +26,7 @@ const BlogForm = ({ blog }: { blog: UpdateBlogProps }) => {
       .then((res) => {
         console.log(res.data);
         setIsLoading(false);
+        router.refresh();
         router.push('/profile');
       })
       .catch((err) => console.error(err));

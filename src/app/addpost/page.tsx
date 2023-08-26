@@ -7,7 +7,7 @@ import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 
 const INITIAL_DATA: NewBlogPost = {
   title: '',
@@ -62,7 +62,7 @@ const AddPage = () => {
           disabled={isLoading}
           className='w-full text-center md:p-2 md:text-lg mb-1 bg-blue-600 border border-black rounded-md p-1'
         >
-          {isLoading ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Update'}
+          {isLoading ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Add'}
         </button>
         <Link href='/profile'>
           <button className='w-full md:p-2 md:text-lg border bg-red-600 border-black rounded-md p-1'>

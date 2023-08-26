@@ -2,9 +2,9 @@ import { authOptions } from '@/lib/authOptions';
 import { prisma } from '@/lib/prisma';
 import { UpdatePageProps } from '@/types/types';
 import { getServerSession } from 'next-auth';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const GET = async (req: Request) => {
+export const GET = async (req: NextRequest) => {
   const userId = req.url.slice(req.url.lastIndexOf('/') + 1).toString();
 
   // ! Check if User ID is valid

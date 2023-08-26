@@ -8,8 +8,6 @@ import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const revalidate = 0;
-
 const getData = async () => {
   try {
     const response = await axios.get('http://localhost:3000/api/blogs');
@@ -30,11 +28,10 @@ const HomePage = async ({
 
   const page = searchParams['page'] ?? '1';
   const per_page = searchParams['per_page'] ?? '6';
-
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
   const blogUser: BlogUserProps[] = await getData();
-
+  const totalPage = Math.ceil(blogUser.length / Number(per_page));
   const entries = blogUser.slice(start, end);
 
   return (
@@ -63,7 +60,11 @@ const HomePage = async ({
         ))}
       </div>
       <div className='flex justify-center mt-3'>
-        <PaginationControl hasNextPage={end < blogUser.length} hasPrevPage={start > 0} />
+        <PaginationControl
+          totalPage={totalPage}
+          hasNextPage={end < blogUser.length}
+          hasPrevPage={start > 0}
+        />
       </div>
     </div>
   );

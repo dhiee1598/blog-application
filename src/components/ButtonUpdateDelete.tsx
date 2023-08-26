@@ -18,6 +18,7 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
       .then((res) => {
         console.log(res.data);
         setIsBusy(false);
+        router.refresh();
         router.push('/profile');
       })
       .catch((err) => {

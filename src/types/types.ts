@@ -27,4 +27,5 @@ export type UpdateBlogProps = {
 export type PaginationProps = {
   hasNextPage: boolean;
   hasPrevPage: boolean;
+  totalPage: Number;
 };

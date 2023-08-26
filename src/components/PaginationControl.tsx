@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { FaForward } from 'react-icons/fa';
 import { FaBackward } from 'react-icons/fa';
 
-const PaginationControl = ({ hasNextPage, hasPrevPage }: PaginationProps) => {
+const PaginationControl = ({ hasNextPage, hasPrevPage, totalPage }: PaginationProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const page = searchParams.get('page') ?? '1';
@@ -23,9 +23,9 @@ const PaginationControl = ({ hasNextPage, hasPrevPage }: PaginationProps) => {
         <FaBackward size={20} />
       </button>
       <div>
-        <h1 className='text-xl border border-black py-1 px-5 rounded-md'>{`${page} / ${Math.ceil(
-          10 / Number(per_page)
-        )}`}</h1>
+        <h1 className='text-xl border border-black py-1 px-5 rounded-md'>
+          {`${page} / ${totalPage}`}
+        </h1>
       </div>
       <button
         disabled={!hasNextPage}
