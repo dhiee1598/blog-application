@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
-import { env } from 'process';
+import { env } from '@/lib/env';
 
 const ButtonUpdateDelete = ({ id }: { id: string }) => {
   const [isBusy, setIsBusy] = useState<boolean>();

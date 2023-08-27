@@ -4,7 +4,7 @@ import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { env } from 'process';
+import { env } from '@/lib/env';
 
 const getData = async (id: string) => {
   try {

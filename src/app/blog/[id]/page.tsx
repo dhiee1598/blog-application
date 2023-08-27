@@ -9,7 +9,7 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { env } from 'process';
+import { env } from '@/lib/env';
 
 const getData = async (value: string) => {
   try {

@@ -3,7 +3,7 @@
 import { useUpdateUser } from '@/hooks/use-update';
 import { UpdatePageProps } from '@/types/types';
 import Link from 'next/link';
-import { env } from 'process';
+import { env } from '@/lib/env';
 import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 

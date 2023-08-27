@@ -4,7 +4,7 @@ import { UpdateBlogProps } from '@/types/types';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { env } from 'process';
+import { env } from '@/lib/env';
 import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 

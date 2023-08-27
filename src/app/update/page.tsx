@@ -4,7 +4,7 @@ import axios from 'axios';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { env } from 'process';
+import { env } from '@/lib/env';
 
 const getData = async (id: string) => {
   const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs/user/${id}`);
