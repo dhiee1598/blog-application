@@ -3,7 +3,6 @@ import { NewBlogPost } from '@/types/types';
 import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import { authOptions } from '../auth/[...nextauth]/route';
-import { revalidatePath } from 'next/cache';
 
 export const GET = async () => {
   const allBlog = await prisma.blog.findMany({
@@ -32,6 +31,5 @@ export const POST = async (req: Request) => {
     },
   });
 
-  NextResponse.json({ message: 'New Blog Created', data: newBlog }, { status: 201 });
-  return NextResponse.redirect('/profile');
+  return NextResponse.json({ message: 'New Blog Created', data: newBlog }, { status: 201 });
 };
