@@ -17,7 +17,7 @@ const INITIAL_DATA: NewBlogPost = {
 };
 
 const AddPage = () => {
-  const { createPost, isLoading } = usePost(`${env.NEXTAUTH_URL}/api/blogs`);
+  const { createPost, isLoading } = usePost(`http://localhost:3000/api/blogs`);
   const [newBlog, setNewBlog] = useState(INITIAL_DATA);
   const session = useSession();
 
