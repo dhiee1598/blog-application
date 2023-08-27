@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export const usePost = (url: string) => {
   const [isLoading, setIsLoading] = useState<boolean>();
@@ -15,7 +16,7 @@ export const usePost = (url: string) => {
         setIsLoading(false);
         console.log(res.data);
 
-        router.refresh();
+        revalidatePath('/profile');
         router.push('/profile');
       })
       .catch((err) => {
