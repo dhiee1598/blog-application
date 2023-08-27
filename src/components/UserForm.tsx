@@ -3,6 +3,7 @@
 import { useUpdateUser } from '@/hooks/use-update';
 import { UpdatePageProps } from '@/types/types';
 import Link from 'next/link';
+import { env } from 'process';
 import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 
@@ -14,7 +15,7 @@ const UserForm = ({ username, contact, aboutMe, userId }: UpdatePageProps) => {
   });
 
   const { isLoading, updateUser } = useUpdateUser(
-    `http://localhost:3000/api/blogs/user/${userId}`
+    `${env.NEXTAUTH_URL}/api/blogs/user/${userId}`
   );
 
   const handleSubmit = async (e: FormEvent) => {
