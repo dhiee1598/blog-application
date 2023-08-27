@@ -7,10 +7,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import { env } from 'process';
 
 const getData = async (id: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/user/${id}`);
+    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs/user/${id}`);
     return response.data;
   } catch (err) {
     console.log(err);

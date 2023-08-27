@@ -4,10 +4,11 @@ import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
+import { env } from 'process';
 
 const getData = async (id: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${id}`);
+    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs/${id}`);
     return response.data;
   } catch (err) {
     console.log(err);

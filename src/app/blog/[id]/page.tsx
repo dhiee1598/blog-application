@@ -9,10 +9,11 @@ import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { env } from 'process';
 
 const getData = async (value: string) => {
   try {
-    const response = await axios.get(`http://localhost:3000/api/blogs/${value}`);
+    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs/${value}`);
     return response.data;
   } catch (err) {
     console.log(err);

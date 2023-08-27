@@ -8,10 +8,11 @@ import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { authOptions } from '../api/auth/[...nextauth]/route';
+import { env } from 'process';
 
 const getData = async () => {
   try {
-    const response = await axios.get('https://blogmania-application.vercel.app/api/blogs');
+    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs`);
     return response.data;
   } catch (err) {
     console.log(err);
