@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { env } from 'process';
+import { env } from '@/lib/env';
 
 const getData = async () => {
   try {
