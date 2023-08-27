@@ -37,7 +37,7 @@ const HomePage = async ({
   const entries = blogUser.slice(start, end);
 
   return (
-    <div className='min-h-[calc(100vh-4rem)] p-1 relative'>
+    <div className='min-h-[calc(100vh-4rem)] p-1'>
       <h1 className='text-center text-4xl uppercase my-3 lg:text-5xl'>
         <span className='text-yellow-500'>Blog </span>Mania All Post
       </h1>
