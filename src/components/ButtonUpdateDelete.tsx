@@ -41,11 +41,10 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
           Update
         </button>
       </Link>
-      <Link
-        className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 text-center p-2 w-1/2'
-        href='/profile'
-      >
-        Back
+      <Link href='/profile'>
+        <button className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'>
+          Back
+        </button>
       </Link>
     </div>
   );
