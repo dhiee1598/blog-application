@@ -14,7 +14,6 @@ export const usePost = (url: string) => {
       .then((res) => {
         setIsLoading(false);
         console.log(res.data);
-        router.refresh();
         router.replace('/profile');
       })
       .catch((err) => {
