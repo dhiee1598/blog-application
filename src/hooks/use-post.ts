@@ -14,8 +14,6 @@ export const usePost = (url: string) => {
       .then((res) => {
         setIsLoading(false);
         console.log(res.data);
-        router.refresh();
-        router.push('/profile');
       })
       .catch((err) => {
         setIsLoading(false);
