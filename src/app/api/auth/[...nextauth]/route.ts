@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
       return baseUrl;
     },
   },
+  secret: env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);

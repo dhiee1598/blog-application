@@ -22,7 +22,7 @@ const BlogForm = ({ blog }: { blog: UpdateBlogProps }) => {
     setIsLoading(true);
 
     await axios
-      .patch(`https://blogmania-application.vercel.app/api/blogs/${blog.id}`, updateBlog)
+      .patch(`http://localhost:3000/api/blogs/${blog.id}`, updateBlog)
       .then((res) => {
         console.log(res.data);
         setIsLoading(false);

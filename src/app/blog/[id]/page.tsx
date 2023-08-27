@@ -12,9 +12,7 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 
 const getData = async (value: string) => {
   try {
-    const response = await axios.get(
-      `https://blogmania-application.vercel.app/api/blogs/${value}`
-    );
+    const response = await axios.get(`http://localhost:3000/api/blogs/${value}`);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -55,7 +53,7 @@ const BlogPage = async ({ params }: { params: { id: string } }) => {
       {blog.userId === session.user.id && <ButtonUpdateDelete id={blog.id} />}
       <Link
         className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 px-5 py-1 w-auto'
-        href='/'
+        href='/home'
       >
         Back
       </Link>

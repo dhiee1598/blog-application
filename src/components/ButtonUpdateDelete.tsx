@@ -14,7 +14,7 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
     setIsBusy(true);
 
     await axios
-      .delete(`https://blogmania-application.vercel.app/api/blogs/${value}`)
+      .delete(`http://localhost:3000/api/blogs/${value}`)
       .then((res) => {
         console.log(res.data);
         setIsBusy(false);
