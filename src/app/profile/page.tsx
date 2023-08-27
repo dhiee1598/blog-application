@@ -7,16 +7,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { cache } from 'react';
 
-const getData = cache(async (id: string) => {
+const getData = async (id: string) => {
   try {
     const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/blogs/user/${id}`);
     return response.data;
   } catch (err) {
     console.log(err);
   }
-});
+};
 
 const ProfilePage = async () => {
   const session = await getServerSession(authOptions);
