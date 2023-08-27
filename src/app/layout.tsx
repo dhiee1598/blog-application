@@ -13,6 +13,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Blog Mania',
   description: 'This is my first project using NextJS 13.4',
+  openGraph: {
+    images: [{ url: '/socialshareprev.png' }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
