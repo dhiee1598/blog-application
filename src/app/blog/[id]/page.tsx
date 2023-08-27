@@ -50,7 +50,7 @@ const BlogPage = async ({ params }: { params: { id: string } }) => {
       <p className='whitespace-pre-wrap mb-5'>{`"${blog.content}"`}</p>
       {blog.userId === session.user.id && <ButtonUpdateDelete id={blog.id} />}
       <Link
-        className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 px-5 py-1 w-auto'
+        className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 text-center p-2 w-1/2'
         href='/home'
       >
         Back

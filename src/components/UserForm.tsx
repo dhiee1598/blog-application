@@ -21,39 +21,41 @@ const UserForm = ({ username, contact, aboutMe, userId }: UpdatePageProps) => {
   };
 
   return (
-    <form className='w-4/6 m-auto' onSubmit={handleSubmit}>
-      <h1 className='text-5xl text-center my-5'>Update Profile Information</h1>
+    <form className='w-full p-5' onSubmit={handleSubmit}>
+      <h1 className='text-5xl text-center my-5'>Update Bio</h1>
       <input
         type='text'
         required
         value={updateInfo.username}
-        placeholder={updateInfo.username}
+        placeholder={updateInfo.username || 'Username'}
         onChange={(e) => setUpdateInfo({ ...updateInfo, username: e.target.value })}
-        className='w-full mb-1 border border-black rounded-lg p-1 outline-none lg:p-3 md:p-2'
+        className='w-full mb-1 border border-black rounded-lg p-2 text-lg outline-none'
       />
       <textarea
         required
         value={updateInfo.aboutMe}
-        placeholder={updateInfo.username}
+        placeholder={updateInfo.username || 'About Me'}
         onChange={(e) => setUpdateInfo({ ...updateInfo, aboutMe: e.target.value })}
-        className='w-full  border border-black rounded-lg p-1 outline-none lg:p-3 md:p-2'
+        className='w-full  border border-black rounded-lg p-2 text-lg outline-none'
       />
       <input
         type='text'
         required
-        placeholder={updateInfo.contact}
+        placeholder={updateInfo.contact || 'Contact'}
         onChange={(e) => setUpdateInfo({ ...updateInfo, contact: e.target.value })}
-        className='w-full mb-1 border border-black rounded-lg p-1 outline-none lg:p-3 md:p-2'
+        className='w-full mb-1 border border-black rounded-lg p-2 text-lg outline-none'
       />
       <button
         type='submit'
         disabled={isLoading}
-        className='w-full bg-blue-500 pt-1 px-3 font-light uppercase rounded-md text-lg mb-2'
+        className='w-full bg-blue-500 m-auto border p-2 border-black rounded-md text-xl mb-2'
       >
         {isLoading ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Update'}
       </button>
       <Link href='/profile'>
-        <button className='w-full md:p-2 md:text-lg bg-red-600 rounded-md p-1'>Back</button>
+        <button className='w-full p-2 border text-xl border-black m-auto bg-red-600 rounded-md'>
+          Back
+        </button>
       </Link>
     </form>
   );

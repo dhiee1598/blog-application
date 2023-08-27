@@ -29,7 +29,7 @@ const NewBlogForm = () => {
         value={newBlog.title}
         placeholder='Title'
         onChange={(e) => setNewBlog({ ...newBlog, title: e.target.value })}
-        className='w-full md:p-3 md:text-lg p-1 mb-1 border border-black rounded-md outline-none'
+        className='w-full md:p-3 md:text-lg p-2 text-lg mb-1 border border-black rounded-md outline-none'
       />
       <input
         type='text'
@@ -37,24 +37,24 @@ const NewBlogForm = () => {
         placeholder='Author'
         value={newBlog.author}
         onChange={(e) => setNewBlog({ ...newBlog, author: e.target.value })}
-        className='w-full p-1 border md:p-3 md:text-lg mb-1 border-black rounded-md outline-none'
+        className='w-full p-2 text-lg border md:p-3 md:text-lg mb-1 border-black rounded-md outline-none'
       />
       <textarea
         placeholder='Content'
         value={newBlog.content}
         required
         onChange={(e) => setNewBlog({ ...newBlog, content: e.target.value })}
-        className='w-full p-1 border md:p-3 md:text-lg border-black h-32 rounded-md outline-none'
+        className='w-full p-2 text-lg border border-black h-32 rounded-md outline-none'
       />
       <button
         type='submit'
         disabled={isLoading}
-        className='w-full text-center md:p-2 md:text-lg mb-1 bg-blue-600 border border-black rounded-md p-1'
+        className='w-full text-center md:text-lg mb-1 bg-blue-600 border border-black rounded-md p-2 text-lg'
       >
         {isLoading ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Add'}
       </button>
       <Link href='/profile'>
-        <button className='w-full md:p-2 md:text-lg border bg-red-600 border-black rounded-md p-1'>
+        <button className='w-full border bg-red-600 border-black rounded-md p-2 text-lg'>
           Back
         </button>
       </Link>

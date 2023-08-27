@@ -12,7 +12,7 @@ const PaginationControl = ({ hasNextPage, hasPrevPage, totalPage }: PaginationPr
   const per_page = searchParams.get('per_page') ?? '6';
 
   return (
-    <div className='flex justify-center gap-2 p-3'>
+    <div className='flex justify-center gap-2 p-3 absolute bottom-0'>
       <button
         disabled={!hasPrevPage}
         className='shadow-xl shadow-black px-5 py-1'

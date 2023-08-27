@@ -28,16 +28,16 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
   };
 
   return (
-    <div>
+    <div className='w-full'>
       <button
         disabled={isBusy}
         onClick={() => deleteBlog(id)}
-        className='w-auto text-center md:p-2 md:text-lg mr-1 bg-red-500 border border-black rounded-md p-1'
+        className='w-1/2 text-center block m-auto mb-1 bg-red-500 border border-black rounded-md p-2'
       >
         {isBusy ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Delete'}
       </button>
       <Link href={`/updateblog/${id}`}>
-        <button className='w-auto md:p-2 md:text-lg border bg-blue-500 border-black rounded-md p-1'>
+        <button className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'>
           Update
         </button>
       </Link>

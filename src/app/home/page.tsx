@@ -37,26 +37,28 @@ const HomePage = async ({
   const entries = blogUser.slice(start, end);
 
   return (
-    <div className='min-h-[calc(100vh-4rem)] p-5 relative'>
-      <h1 className='text-center text-4xl uppercase mb-3 lg:text-5xl'> Blog Mania All Post</h1>
+    <div className='min-h-[calc(100vh-4rem)] p-1 relative'>
+      <h1 className='text-center text-4xl uppercase my-3 lg:text-5xl'>
+        <span className='text-yellow-500'>Blog </span>Mania All Post
+      </h1>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-4 p-2'>
         {entries.map((blog) => (
           <Link
             href={`blog/${blog.id}`}
             key={blog.id}
-            className='flex w-full py-2 px-5 h-auto justify-evenly items-center border rounded-md shadow-xl'
+            className='flex w-full py-2 px-3 h-auto justify-evenly items-center border rounded-md shadow-xl'
           >
             <Image
               src={blog.user.image || `/icons8-test-account-96.png`}
               alt='Profile Picture'
-              width={35}
-              height={35}
-              className='mr-2 lg:w-20 rounded-full'
+              width={20}
+              height={20}
+              className='object-contain w-20 rounded-full'
             />
-            <div>
+            <div className='w-1/2'>
               <h1 className='font-bold mb-3'>Title: {blog.title}</h1>
               <p className='text-blue-500'>Posted By: {blog.user.name}</p>
-              <p className='text-blue-500'>Created At: {formatDate(blog.createdAt)}</p>
+              <p className='text-blue-500 text-sm'>Created At: {formatDate(blog.createdAt)}</p>
             </div>
           </Link>
         ))}
