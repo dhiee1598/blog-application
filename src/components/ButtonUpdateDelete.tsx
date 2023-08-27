@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
-import { env } from '@/lib/env';
 
 const ButtonUpdateDelete = ({ id }: { id: string }) => {
   const [isBusy, setIsBusy] = useState<boolean>();
@@ -15,7 +14,7 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
     setIsBusy(true);
 
     await axios
-      .delete(`${env.NEXTAUTH_URL}/api/blogs/${value}`)
+      .delete(`/api/blogs/${value}`)
       .then((res) => {
         console.log(res.data);
         setIsBusy(false);

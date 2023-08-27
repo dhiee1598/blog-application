@@ -2,18 +2,15 @@ import { BlogUserProps } from '@/types/types';
 import { redirect } from 'next/navigation';
 import axios from 'axios';
 import Image from 'next/image';
-import formatDate from '@/lib/formatData';
 import ButtonUpdateDelete from '@/components/ButtonUpdateDelete';
 import { getServerSession } from 'next-auth';
-
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { env } from '@/lib/env';
 
 const getData = async (value: string) => {
   try {
-    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs/${value}`);
+    const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/blogs/${value}`);
     return response.data;
   } catch (err) {
     console.log(err);

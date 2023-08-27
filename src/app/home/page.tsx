@@ -1,5 +1,4 @@
 import PaginationControl from '@/components/PaginationControl';
-
 import formatDate from '@/lib/formatData';
 import { BlogUserProps } from '@/types/types';
 import axios from 'axios';
@@ -8,11 +7,10 @@ import { redirect } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { authOptions } from '../api/auth/[...nextauth]/route';
-import { env } from '@/lib/env';
 
 const getData = async () => {
   try {
-    const response = await axios.get(`${env.NEXTAUTH_URL}/api/blogs`);
+    const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/blogs`);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -32,7 +30,9 @@ const HomePage = async ({
   const per_page = searchParams['per_page'] ?? '6';
   const start = (Number(page) - 1) * Number(per_page);
   const end = start + Number(per_page);
+
   const blogUser: BlogUserProps[] = await getData();
+
   const totalPage = Math.ceil(blogUser.length / Number(per_page));
   const entries = blogUser.slice(start, end);
 

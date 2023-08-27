@@ -4,7 +4,6 @@ import { UpdateBlogProps } from '@/types/types';
 import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { env } from '@/lib/env';
 import { FormEvent, useState } from 'react';
 import { FaSpinner } from 'react-icons/fa';
 
@@ -23,7 +22,7 @@ const BlogForm = ({ blog }: { blog: UpdateBlogProps }) => {
     setIsLoading(true);
 
     await axios
-      .patch(`${env.NEXTAUTH_URL}/api/blogs/${blog.id}`, updateBlog)
+      .patch(`/api/blogs/${blog.id}`, updateBlog)
       .then((res) => {
         console.log(res.data);
         setIsLoading(false);
