@@ -39,7 +39,7 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
       <Link href={`/updateblog/${id}`}>
         <button
           disabled={isBusy}
-          className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'
+          className='w-1/2 block m-auto p-2 md:text-lg mb-1 border bg-blue-500 border-black rounded-md'
         >
           Update
         </button>
