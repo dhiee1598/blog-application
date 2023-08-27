@@ -37,12 +37,18 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
         {isBusy ? <FaSpinner className='animate-spin m-auto' size={24} /> : 'Delete'}
       </button>
       <Link href={`/updateblog/${id}`}>
-        <button className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'>
+        <button
+          disabled={isBusy}
+          className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'
+        >
           Update
         </button>
       </Link>
       <Link href='/profile'>
-        <button className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'>
+        <button
+          disabled={isBusy}
+          className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'
+        >
           Back
         </button>
       </Link>
