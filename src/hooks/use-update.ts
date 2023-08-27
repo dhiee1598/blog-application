@@ -16,7 +16,7 @@ export const useUpdateUser = (url: string) => {
         console.log(res.data);
 
         router.refresh();
-        router.push('/profile');
+        router.replace('/profile');
       })
       .catch((err) => {
         setIsLoading(false);

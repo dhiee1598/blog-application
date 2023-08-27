@@ -19,7 +19,7 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
         console.log(res.data);
         setIsBusy(false);
         router.refresh();
-        router.push('/profile');
+        router.replace('/profile');
       })
       .catch((err) => {
         setIsBusy(false);
@@ -40,6 +40,12 @@ const ButtonUpdateDelete = ({ id }: { id: string }) => {
         <button className='w-1/2 block m-auto p-2 md:text-lg border bg-blue-500 border-black rounded-md'>
           Update
         </button>
+      </Link>
+      <Link
+        className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 text-center p-2 w-1/2'
+        href='/profile'
+      >
+        Back
       </Link>
     </div>
   );

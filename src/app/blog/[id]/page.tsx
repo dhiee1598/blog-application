@@ -48,13 +48,16 @@ const BlogPage = async ({ params }: { params: { id: string } }) => {
       <p className='text-lg italic text-red-500'>Author: {blog.author}</p>
       <p className='text-base text-blue-500 mb-5'>Posted By: {blog.user.name}</p>
       <p className='whitespace-pre-wrap mb-5'>{`"${blog.content}"`}</p>
-      {blog.userId === session.user.id && <ButtonUpdateDelete id={blog.id} />}
-      <Link
-        className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 text-center p-2 w-1/2'
-        href='/home'
-      >
-        Back
-      </Link>
+      {blog.userId === session.user.id ? (
+        <ButtonUpdateDelete id={blog.id} />
+      ) : (
+        <Link
+          className='mt-1 md:text-lg border border-black rounded-md bg-blue-500 text-center p-2 w-1/2'
+          href='/home'
+        >
+          Back
+        </Link>
+      )}
     </div>
   );
 };
