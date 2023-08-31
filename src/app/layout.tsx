@@ -30,7 +30,9 @@ export default function RootLayout({
           <QueryProvider>
             <ThemesProvider>
               <Navbar />
-              <main className="max-w-5xl m-auto w-full p-4">{children}</main>
+              <main className="max-w-5xl m-auto w-full px-4 shadow-md">
+                {children}
+              </main>
               <Footer />
             </ThemesProvider>
           </QueryProvider>
