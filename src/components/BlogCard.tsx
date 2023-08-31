@@ -10,18 +10,18 @@ const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
     <Link
       href={`/blogs/${blog.id}`}
       key={blog.id}
-      className="flex bg-stone-100 border dark:border-none dark:bg-indigo-950 w-full m-auto max-w-[350px] items-center justify-evenly shadow-md p-1"
+      className="flex bg-stone-100 border dark:border-none dark:bg-indigo-950 w-full m-auto max-w-[350px] items-center justify-start p-1"
     >
-      <figure>
+      <figure className="w-20 px-4">
         <Image
-          width={30}
+          width={40}
           height={30}
           className="object-cover rounded-full"
           src={blog.user.image || "/default-img.png"}
           alt="Profile Pic"
         />
       </figure>
-      <div>
+      <div className="flex-1">
         <p className="text-sm font-bold">{`"${blog.title}"`}</p>
         <p className="text-sm mb-1 text-red-500 italic">
           Author: {blog.author}

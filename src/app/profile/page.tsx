@@ -34,7 +34,7 @@ const ProfilePage = () => {
                 className="lg:h-36 lg:w-36 object-cover rounded-full m-auto"
               />
             </figure>
-            <div className="my-3 mx-3 dark:bg-stone-800 p-4 bg-stone-200 rounded-sm">
+            <div className="my-3 mx-3 dark:bg-stone-900 p-4 bg-stone-200 rounded-sm">
               <h1 className="mb-1 text-lg lg:text-xl">Welcome Back!</h1>
               <p className="text-sm lg:text-lg">Name: {data.name}</p>
               <p className="text-sm lg:text-lg">Email: {data.email}</p>

@@ -26,7 +26,7 @@ const HomePage = ({
 
   return (
     <div className="min-h-[calc(100vh-4rem)] py-5">
-      <h1 className="lg:text-5xl text-center text-xl my-10">All Posted Blog</h1>
+      <h1 className="lg:text-6xl text-center text-3xl my-5">All Posted Blog</h1>
 
       {isLoading ? (
         <FaSpinner className="animate-spin m-auto" size={40} />
