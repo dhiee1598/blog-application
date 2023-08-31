@@ -5,7 +5,6 @@ import { Poppins } from "next/font/google";
 import Footer from "@/components/Footer";
 import QueryProvider from "@/components/QueryProvider";
 import SessionProviders from "@/components/SessionProviders";
-import { ThemeProvider } from "next-themes";
 import ThemesProvider from "@/components/ThemesProvider";
 
 const poppins = Poppins({
@@ -16,6 +15,9 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Blog Mania",
   description: "My first project using NextJS 13.4",
+  openGraph: {
+    images: "/socialshare.png",
+  },
 };
 
 export default function RootLayout({
