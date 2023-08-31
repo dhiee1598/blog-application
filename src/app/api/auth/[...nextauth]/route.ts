@@ -1,33 +1,28 @@
-import NextAuth from 'next-auth/next';
-import { NextAuthOptions } from 'next-auth';
-import GoogleProvider from 'next-auth/providers/google';
-import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { prisma } from '@/lib/prisma';
-import { Adapter } from 'next-auth/adapters';
-import { env } from '@/lib/env';
+import { env } from "@/lib/env";
+import { prisma } from "@/lib/prisma";
+import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import NextAuth, { NextAuthOptions } from "next-auth";
+import { Adapter } from "next-auth/adapters";
+import GoogleProvider from "next-auth/providers/google";
 
 export const authOptions: NextAuthOptions = {
+  // Configure one or more authentication providers
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GoogleProvider({
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
+    // ...add more providers here
   ],
+  secret: env.NEXTAUTH_SECRET,
   callbacks: {
     session({ session, user }) {
       session.user.id = user.id;
-
       return session;
     },
-    async redirect({ url, baseUrl }) {
-      new URL(url).origin === baseUrl;
-      return baseUrl;
-    },
   },
-  secret: env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
+export { handler as POST, handler as GET };

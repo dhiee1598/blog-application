@@ -1,91 +1,81 @@
-import ButtonSignOut from '@/components/ButtonSignOut';
-import formatDate from '@/lib/formatData';
-import { UserBlogProps } from '@/types/types';
-import axios from 'axios';
-import { getServerSession } from 'next-auth';
-import Image from 'next/image';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import { authOptions } from '../api/auth/[...nextauth]/route';
+"use client";
 
-const getData = async (id: string) => {
-  try {
-    const response = await axios.get(`${process.env.NEXTAUTH_URL}/api/blogs/user/${id}`);
-    return response.data;
-  } catch (err) {
-    console.log(err);
-  }
-};
+import { redirect } from "next/navigation";
+import Image from "next/image";
+import { useSession } from "next-auth/react";
+import { useFetchUser } from "@/hooks/useFetch";
+import { FaRegCircle } from "react-icons/fa";
+import Link from "next/link";
+import UserBlogCard from "@/components/UserBlogCard";
 
-const ProfilePage = async () => {
-  const session = await getServerSession(authOptions);
+const ProfilePage = () => {
+  const session = useSession();
+  if (session.data === null) redirect("/");
 
-  if (!session) {
-    redirect('/');
-  }
-
-  const userBlog: UserBlogProps = await getData(session?.user.id);
+  const { data, isLoading, isError } = useFetchUser(session.data?.user.id);
 
   return (
-    <div className=' max-w-[800px] shadow-xl m-auto min-h-[calc(100vh-4rem)] py-5'>
-      <div className='  flex justify-evenly items-center p-5'>
-        <figure>
-          <Image
-            src={userBlog.image || '/icons8-test-account-96.png'}
-            alt='Profile Pic'
-            width={100}
-            height={100}
-            className='object-cover md:h-40 md:w-40'
-          />
-        </figure>
-        <div className='ml-3'>
-          <h1 className='text-xl mb-1 font-bold uppercase'>Profile Information</h1>
-          <p>
-            <span className='font-bold'>Name:</span> {userBlog.name}
-          </p>
-          <p>
-            <span className='font-bold'>Email:</span> {userBlog.email}
-          </p>
-          <p>
-            <span className='font-bold'>Username:</span> {userBlog.username}
-          </p>
-          <p>
-            <span className='font-bold'>Contact:</span> {userBlog.contact}
-          </p>
-          <p className='mb-3'>
-            <span className='font-bold'>About Me:</span> {userBlog.aboutMe}
-          </p>
-          <Link
-            href='/update'
-            className='border mr-1 bg-blue-500 border-black rounded-md w-auto px-2 md:px-4 py-1'
-          >
-            Update
-          </Link>
-          <Link
-            href='/addpost'
-            className='border mr-1 bg-blue-500 border-black rounded-md w-auto px-2 md:px-4 py-1'
-          >
-            Add Post
-          </Link>
-          <ButtonSignOut />
-        </div>
-      </div>
-      <div>
-        <h1 className='text-center text-xl pt-5'>Total Post: {userBlog.Blog.length}</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3 p-2'>
-          {userBlog.Blog.map((blog) => (
-            <Link
-              key={blog.id}
-              href={`blog/${blog.id}`}
-              className='shadow-xl p-3 text-center h-auto w-full'
-            >
-              <h1 className='font-bold text-lg'>Title: {blog.title}</h1>
-              <p className='text-base italic text-red-500'>Author: {blog.author}</p>
-              <p className='text-xs text-blue-500'>Created At: {formatDate(blog.createdAt)}</p>
-            </Link>
-          ))}
-        </div>
-      </div>
+    <div className="min-h-[calc(100vh-4rem)] py-5 px-1">
+      {isLoading ? (
+        <FaRegCircle size={50} className="animate-ping m-auto my-10" />
+      ) : isError ? (
+        <h1 className="text-center text-red-500 my-5">
+          Failed to fetch data !
+        </h1>
+      ) : (
+        <>
+          <div className="flex flex-col items-stretch justify-center max-w-[450px] lg:max-w-[600px] m-auto shadow-lg">
+            <figure>
+              <Image
+                src={data.image || "/default-img.png"}
+                alt="Profile picture"
+                width={80}
+                height={80}
+                className="lg:h-36 lg:w-36 object-cover rounded-full m-auto"
+              />
+            </figure>
+            <div className="my-3 mx-3 dark:bg-stone-800 p-4 bg-stone-200 rounded-sm">
+              <h1 className="mb-1 text-lg lg:text-xl">Welcome Back!</h1>
+              <p className="text-sm lg:text-lg">Name: {data.name}</p>
+              <p className="text-sm lg:text-lg">Email: {data.email}</p>
+              <p className="text-sm lg:text-lg">Nickname: {data.nickname}</p>
+              <p className="text-sm lg:text-lg">Contact: {data.contact}</p>
+              <p className="text-sm lg:text-lg">About Me: {data.about}</p>
+              <Link href={`/updateusers/${data.id}`}>
+                <button
+                  className="bg-blue-500 my-1 lg:text-lg rounded-md p-2 text-xs uppercase w-full"
+                  type="button"
+                >
+                  Update
+                </button>
+              </Link>
+              <Link href="/newpost">
+                <button
+                  className="w-full lg:text-lg bg-blue-500 rounded-md p-2 mb-2 text-xs uppercase"
+                  type="button"
+                >
+                  Add Post
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div>
+            <h1 className="text-center my-5 text-xl">Your Post</h1>
+            <p className="text-center">Total: {data.Blog.length}</p>
+            <div className="grid max-w-[1000px] m-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {data.Blog.map((blog) => (
+                <UserBlogCard
+                  key={blog.id}
+                  title={blog.title}
+                  author={blog.author}
+                  createdAt={blog.createdAt}
+                  id={blog.id}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

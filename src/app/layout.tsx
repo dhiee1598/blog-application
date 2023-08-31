@@ -1,9 +1,12 @@
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
-import Session from '@/components/Session';
+import Footer from '@/components/Footer';
+import QueryProvider from '@/components/QueryProvider';
+import SessionProviders from '@/components/SessionProviders';
+import { ThemeProvider } from 'next-themes';
+import ThemesProvider from '@/components/ThemesProvider';
 
 const poppins = Poppins({
   subsets: ['latin'],
@@ -12,22 +15,23 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'Blog Mania',
-  description: 'This is my first project using NextJS 13.4',
-  openGraph: {
-    images: [{ url: '/socialshareprev.png' }],
-  },
+  description: 'My first project using NextJS 13.4',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <Session>
-      <html lang='en'>
-        <body className={poppins.className}>
-          <Navbar />
-          <main className='shadow-xl max-w-6xl m-auto min-w-[400px]'>{children}</main>
-          <Footer />
-        </body>
-      </html>
-    </Session>
+    <html lang='en' className='light' style={{ colorScheme: 'light' }}>
+      <body className={poppins.className}>
+        <SessionProviders>
+          <QueryProvider>
+            <ThemesProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </ThemesProvider>
+          </QueryProvider>
+        </SessionProviders>
+      </body>
+    </html>
   );
 }

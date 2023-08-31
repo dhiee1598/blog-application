@@ -1,31 +1,31 @@
-import { Prisma } from '@prisma/client';
+import { Prisma } from "@prisma/client";
 
-export type UserBlogProps = Prisma.UserGetPayload<{ include: { Blog: true } }>;
+export interface UserMenuProps {
+  name?: string;
+  image?: string;
+}
 
-export type BlogUserProps = Prisma.BlogGetPayload<{ include: { user: true } }>;
-
-export type NewBlogPost = {
+export interface NewBlogPost {
   title: string;
   author: string;
   content: string;
-};
+}
 
-export type UpdatePageProps = {
-  username?: string;
-  aboutMe?: string;
-  contact?: string;
-  userId: string;
-};
-
-export type UpdateBlogProps = {
-  title: string;
-  author: string;
-  content: string;
+export interface UserBlogCardProps {
   id: string;
-};
+  title: string;
+  author: string;
+  createdAt: Date;
+}
 
-export type PaginationProps = {
+export interface PaginationProps {
   hasNextPage: boolean;
   hasPrevPage: boolean;
-  totalPage: Number;
-};
+  total_page: number;
+}
+
+export type BlogCardProps = Prisma.BlogGetPayload<{ include: { user: true } }>;
+
+export type UserProps = Prisma.UserGetPayload<{
+  include: { Blog: true };
+}>;
