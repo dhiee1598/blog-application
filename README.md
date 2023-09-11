@@ -1,4 +1,4 @@
-# BLOG APPLICATION
+# [BLOG MANIA](https://blogmania-dhiee15.vercel.app)
 
 ## Stack
 
@@ -15,7 +15,8 @@
   - Auto-generated and type-safe query builder for Node.js & TypeScript.
 
 - [Supabase](https://supabase.com)
-- Supabase is a great Firebase replacement that uses a PostgreSQL backend.
+  
+  - Supabase is a great Firebase replacement that uses a PostgreSQL backend.
 
 ### Install Dependencies
 
